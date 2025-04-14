@@ -1,0 +1,28 @@
+{
+  "name": "minimal-cloudflare-workers",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "wrangler build",
+    "generate-types": "wrangler types",
+    "type-check": "tsc -p tsconfig.worker.json",
+    "deploy": "wrangler deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ykrods/minimal-cloudflare-workers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ykrods/minimal-cloudflare-workers/issues"
+  },
+  "homepage": "https://github.com/ykrods/minimal-cloudflare-workers#readme",
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "wrangler": "^4.10.0"
+  }
+}
