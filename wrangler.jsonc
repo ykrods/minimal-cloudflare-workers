@@ -1,5 +1,13 @@
 {
   "name": "minimal-cloudflare-workers",
   "compatibility_date": "2025-04-03",
-  "main": "./src/index.ts"
+  "main": "./src/index.ts",
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "SSE_HUB",
+        "class_name": "SSEHub"
+      }
+    ]
+  }
 }
