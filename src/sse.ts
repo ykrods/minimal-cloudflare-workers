@@ -49,6 +49,7 @@ export class SSEHub extends DurableObject {
         await writer.write(encoder.encode(`event: ${name}\ndata: ${JSON.stringify(data)}\n\n`));
         survivors.push({ stream, timeout, start });
       } catch (e) {
+        console.error(e)
         writer.close();
         clearTimeout(timeout);
       } finally {
