@@ -80,6 +80,43 @@ export default {
         },
       });
     }
+    // 本来 static asset でよいが面倒なので
+    if (url.pathname === "/") {
+      const html = `<!DOCTYPE html>
+<html>
+<head>
+  <title>sse client</title>
+  <meta charset="utf-8">
+  <script>
+    window.eventSource = new EventSource("/events")
+    eventSource.addEventListener("open", (e) => {
+      console.log("open")
+    })
+    eventSource.addEventListener("error", (e) => {
+      console.log("error", e, e.message)
+    })
+
+    eventSource.addEventListener("message", (e) => {
+      console.log("message", e.data)
+    })
+
+    eventSource.addEventListener("connected", (e) => {
+      console.log("connected", e.data)
+    })
+  </script>
+</head>
+<body>
+  <h1>SSE Client</h1>
+  <button onclick="window.eventSource.close()">close</button>
+</body>
+</html>`;
+
+      return new Response(html, {
+        headers: {
+          "content-type": "text/html;charset=UTF-8",
+        },
+      });
+    }
     return new Response(null, { status: 404 });
   },
 } satisfies ExportedHandler<Env>
